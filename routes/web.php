@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::prefix('dashboard')->group(function() {
+/* Conjunto de rutas a las cuales se accede mediante un prefijo */
+Route::prefix('dashboard')->group(function () {
+    /* Llamamos las rutas del controlador PostController tipo resource 
+    route:resource*/
     Route::resource('post', PostController::class);
+    Route::resource('category', CategoryController::class);
 });
